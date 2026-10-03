@@ -1,0 +1,29 @@
+# Virtual environment
+.venv/
+
+# Python caches and generated packages
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# IDE local files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Real Excel data and Excel temporary files
+*.xlsx
+*.xls
+*.xlsm
+*.xlsb
+~$*
+
+# Local secrets, logs, and OS files
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
