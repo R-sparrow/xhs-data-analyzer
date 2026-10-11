@@ -74,7 +74,9 @@ def read_note_daily_metrics(file_path: Any) -> dict[str, pd.DataFrame]:
         ]
 
     if missing_sheets:
-        raise ValueError(f"Excel 缺少必需 Sheet：{', '.join(missing_sheets)}")
+        raise ValueError(
+            f"{path.name} 缺少必需 Sheet：{', '.join(missing_sheets)}"
+        )
 
     result = {}
     for key, (sheet_name, required_columns) in DAILY_SHEETS.items():
