@@ -43,7 +43,7 @@ def _require_columns(
     ]
     if missing_columns:
         raise ValueError(
-            f"{source_name} 缺少必需字段：{', '.join(missing_columns)}"
+            f"{source_name} 缺少必要字段: {', '.join(missing_columns)}"
         )
 
 
@@ -57,7 +57,7 @@ def read_note_list_excel(file_path: Any) -> pd.DataFrame:
         engine="openpyxl",
     )
 
-    _require_columns(dataframe, NOTE_LIST_COLUMNS, "Sheet1")
+    _require_columns(dataframe, NOTE_LIST_COLUMNS, f"{path.name} / Sheet1")
     return dataframe.loc[:, NOTE_LIST_COLUMNS].copy()
 
 
@@ -84,7 +84,11 @@ def read_note_daily_metrics(file_path: Any) -> dict[str, pd.DataFrame]:
             header=0,
             engine="openpyxl",
         )
-        _require_columns(dataframe, required_columns, f"Sheet“{sheet_name}”")
+        _require_columns(
+            dataframe,
+            required_columns,
+            f"{path.name} / {sheet_name}",
+        )
         result[key] = dataframe.loc[:, required_columns].copy()
 
     return result
